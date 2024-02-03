@@ -1,7 +1,8 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
-import {beforeSave} from "@adonisjs/lucid/build/src/Orm/Decorators";
+import {BaseModel, column, HasMany} from '@ioc:Adonis/Lucid/Orm'
+import {beforeSave, hasMany} from "@adonisjs/lucid/build/src/Orm/Decorators";
 import Hash from "@ioc:Adonis/Core/Hash";
+import Score from "App/Models/Score";
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -18,6 +19,9 @@ export default class User extends BaseModel {
 
   @column()
   public remember_me_token: string
+
+  @hasMany(() => Score)
+  public scores: HasMany<typeof Score>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
