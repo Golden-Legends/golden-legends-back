@@ -26,6 +26,7 @@ Route.group(() => {
 Route.group(() => {
   Route.post('/login', 'UsersController.login')
   Route.post('/register', 'UsersController.register')
+  Route.post('/join-main-lobby', 'UsersController.joinMainLobby')
 })
 
 Route.group(() => {

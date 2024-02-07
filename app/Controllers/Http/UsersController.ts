@@ -2,6 +2,7 @@
 
 import {HttpContextContract} from "@ioc:Adonis/Core/HttpContext";
 import User from "App/Models/User";
+import Ws from "App/Services/Ws";
 
 export default class UsersController {
 
@@ -53,5 +54,13 @@ export default class UsersController {
   public async logout ({ auth }: HttpContextContract) {
     await auth.logout()
     return 'Logged out successfully'
+  }
+
+  public async joinMainLobby ({ request }: HttpContextContract) {
+    // Get player name from the request
+    const playerName = request.input('playerName')
+
+    // Emit an event to the main lobby
+    Ws.io.emit('joinMainLobby', playerName)
   }
 }
