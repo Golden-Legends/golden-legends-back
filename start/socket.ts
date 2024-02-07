@@ -6,5 +6,6 @@ Ws.boot()
  */
 Ws.io.on('connection', (socket) => {
   console.log('WebSocket connected:', socket.id);
-  socket.emit('connected', { hello: 'world' })
+  socket.join("main-lobby");
+  socket.to("main-lobby").emit('connected', { hello: 'world' })
 })
