@@ -1,7 +1,6 @@
 import {HttpContextContract} from "@ioc:Adonis/Core/HttpContext";
-import Ws from "App/Services/Ws";
 
-export default class SocketManager {
+export default class SocketManagerController {
 
   public async updatePosition({ }: HttpContextContract) {
 
