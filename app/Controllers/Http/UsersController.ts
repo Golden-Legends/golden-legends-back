@@ -41,12 +41,12 @@ export default class UsersController {
   }
 
   public async login ({ request, auth }: HttpContextContract) {
-    const email = request.input('email')
+    const name = request.input('name')
     const password = request.input('password')
-    if (await auth.attempt(email, password)) {
+    if (await auth.attempt(name, password)) {
       return {
-        email,
-        password,
+        name,
+        email: auth.user?.email,
       }
     }
   }
